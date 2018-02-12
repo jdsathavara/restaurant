@@ -1,0 +1,295 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Truck API",
+        "contact": {
+            "email": "nirmalgoswami247@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to login user",
+                "parameters": [
+                    {
+                        "name": "user_type",
+                        "in": "formData",
+                        "description": "type of user (user/restaurant/driver)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "mobile number of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password of user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to register user",
+                "parameters": [
+                    {
+                        "name": "user_type",
+                        "in": "formData",
+                        "description": "type of user (user/restaurant/driver)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "mobile number of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password of user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/auth/verifyMobile/{id}": {
+            "post": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to verify user mobile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verify_code",
+                        "in": "formData",
+                        "description": "verification code which is sent on user mobile. for now use 123456",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/auth/forgotPassword": {
+            "put": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to send verification code on email to reset password",
+                "parameters": [
+                    {
+                        "name": "user_type",
+                        "in": "formData",
+                        "description": "type of user (user/restaurant/driver)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "mobile number of user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/auth/resetPassword": {
+            "put": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to reset password of user",
+                "parameters": [
+                    {
+                        "name": "reset_password_verify_code",
+                        "in": "formData",
+                        "description": "Verification code which is sent on mobile, for now use : 123456",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "new password of account",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/{id}/updateProfile": {
+            "put": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to update user detail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "formData",
+                        "description": "first name of user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "formData",
+                        "description": "last name of user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "email of user",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/{id}/logout": {
+            "put": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to logout",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/{id}/sendCode": {
+            "put": {
+                "tags": [
+                    "Driver App",
+                    "Restaurant App",
+                    "User App"
+                ],
+                "summary": "This api is used to send verification code on mobile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "tags": [
+        {
+            "name": "User App",
+            "description": "User App APIs"
+        },
+        {
+            "name": "Driver App",
+            "description": "Driver App APIs"
+        },
+        {
+            "name": "Restaurant App",
+            "description": "Restaurant App APIs"
+        }
+    ]
+}
