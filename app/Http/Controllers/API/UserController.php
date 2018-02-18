@@ -64,7 +64,7 @@ class UserController extends ApiController
      *     )
      * )
      */
-    public function updateProfile($id,Request $request){
+    public function updateProfile($id){
 
         $user = $this->user->find($id);
         if(!$user) {

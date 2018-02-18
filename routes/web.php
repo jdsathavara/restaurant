@@ -27,6 +27,17 @@ $router->group(['namespace' => 'API'], function() use ($router) {
         $router->put('{id}/updateProfile','UserController@updateProfile');
         $router->put('{id}/logout','UserController@logout');
         $router->put('{id}/sendCode','UserController@sendCode');
+		$router->get('foodTrucks','FoodTruckController@allUserTrucks');
+		$router->post('{id}/foodTrucks','FoodTruckController@addFoodTruck');
+		$router->post('foodTrucks/{id}','FoodTruckController@editFoodTruck');
+		$router->get('foodTrucks/{id}/category','FoodTruckCategoryController@getTruckCategory');
+		$router->post('foodTrucks/{id}/category','FoodTruckCategoryController@addCategory');
+		$router->put('category/{id}','FoodTruckCategoryController@updateCategory');
+		$router->delete('category/{id}','FoodTruckCategoryController@deleteCategory');
+		$router->get('category/{id}','FoodTruckCategoryController@getCategory');
+    });
+	$router->group(['prefix' => 'product'], function () use ($router) {
+        $router->post('addProduct','ProductController@addProduct');
     });
 });
 

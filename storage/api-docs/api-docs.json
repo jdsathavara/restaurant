@@ -183,6 +183,280 @@
                 }
             }
         },
+        "/user/foodTrucks/{id}/category": {
+            "get": {
+                "tags": [
+                    "User App",
+                    "User App"
+                ],
+                "summary": "This api is used to get all categories detail from truck id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "truck id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Restaurant App"
+                ],
+                "summary": "This api is used to add food truck category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "truck id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "Name of category",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "parent_id",
+                        "in": "formData",
+                        "description": "Parent category ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sort_order",
+                        "in": "formData",
+                        "description": "Sort order of category",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "Status of (enable/disable)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/category/{id}": {
+            "get": {
+                "tags": [
+                    "Restaurant App"
+                ],
+                "summary": "This api is used to get category detail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "category id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Restaurant App"
+                ],
+                "summary": "This api is used to update category detail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "category id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "Name of category",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "parent_id",
+                        "in": "formData",
+                        "description": "Parent category ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sort_order",
+                        "in": "formData",
+                        "description": "Sort order of category",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "Status of (enable/disable)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Restaurant App"
+                ],
+                "summary": "This api is used to delete category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "category id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/foodTrucks": {
+            "get": {
+                "tags": [
+                    "User App"
+                ],
+                "summary": "This api is used to get all food trucks detail",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/{id}/foodTrucks": {
+            "post": {
+                "tags": [
+                    "Restaurant App"
+                ],
+                "summary": "This api is used to add food truck",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "name of truck",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "description": "image of truck",
+                        "required": false,
+                        "type": "file"
+                    },
+                    {
+                        "name": "sort_order",
+                        "in": "formData",
+                        "description": "sort order of truck",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "Status (enable/disable) of truck",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/user/foodTrucks/{id}": {
+            "post": {
+                "tags": [
+                    "Restaurant App"
+                ],
+                "summary": "This api is used to update food truck detail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "truck id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "name of truck",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "description": "image of truck",
+                        "required": false,
+                        "type": "file"
+                    },
+                    {
+                        "name": "sort_order",
+                        "in": "formData",
+                        "description": "sort order of truck",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "Status (enable/disable) of truck",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
         "/user/{id}/updateProfile": {
             "put": {
                 "tags": [

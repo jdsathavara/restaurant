@@ -25,9 +25,25 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 $app->configure('swagger-lume');
+//app()->basePath().DIRECTORY_SEPARATOR.'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+config([
+    "filesystems" => [
+        'default' => 'local',
+        'disks' => [
+            'local' => [
+                'driver' => 'local',
+                'root' => storage_path('app'),
+            ],
+			'truck' => [
+				'driver' => 'local',
+				'root'   => app()->basePath().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'truck',
+			],
+        ],
+    ],
+]);
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -48,6 +64,17 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
+
+$app->singleton(
+    Illuminate\Contracts\Filesystem\Factory::class,
+    function ($app) {
+        return new Illuminate\Filesystem\FilesystemManager($app);
+    }
+);
+
+$app->singleton('filesystem', function ($app) {
+    return $app->loadComponent('filesystems', 'Illuminate\Filesystem\FilesystemServiceProvider', 'filesystem');
+});
 
 /*
 |--------------------------------------------------------------------------
